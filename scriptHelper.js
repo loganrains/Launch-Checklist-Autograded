@@ -1,5 +1,3 @@
-// Write your helper functions here!
-
 require('cross-fetch/polyfill');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
@@ -15,10 +13,10 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
                  </ol>
                  <img src="">
     */
- }
+}
  
 function validateInput(testInput) {
-    if (testInput.length === 0) {
+    if (testInput === "") {
         return "Empty";
 
     } else if (!(isNaN(testInput))) {
@@ -30,27 +28,44 @@ function validateInput(testInput) {
     }
 }
 
-console.log(validateInput("012"));
+ 
+function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    if (validateInput(pilot) == "Empty" || validateInput(copilot) == "Empty" || validateInput(fuelLevel) == "Empty" || validateInput(cargoLevel) == "Empty") {
+        window.alert("All fields are required");
+        event.preventDefault();
+          
+    }
 
+    if (validateInput(pilot) == "Number" || validateInput(copilot) == "Number") {
+        window.alert("Incorrect Data Type Submitted");
+        event.preventDefault();
+
+    } else if (validateInput(fuelLevel) == "Not a Number" || validateInput(cargoLevel) == "Not a Number") {
+        window.alert("Incorrect Data Type Submitted");
+        event.preventDefault();
+
+    }
+
+    return 
+
+    // Incomplete 5/3
+}
  
- function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // >>> Start Here 5/1 <<<
- }
- 
- async function myFetch() {
+async function myFetch() {
      let planetsReturned;
  
      planetsReturned = await fetch().then( function(response) {
-         });
+        });
  
      return planetsReturned;
- }
+}
  
- function pickPlanet(planets) {
- }
+function pickPlanet(planets) {
+
+}
  
- module.exports.addDestinationInfo = addDestinationInfo;
- module.exports.validateInput = validateInput;
- module.exports.formSubmission = formSubmission;
- module.exports.pickPlanet = pickPlanet; 
- module.exports.myFetch = myFetch;
+module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.validateInput = validateInput;
+module.exports.formSubmission = formSubmission;
+module.exports.pickPlanet = pickPlanet; 
+module.exports.myFetch = myFetch;
