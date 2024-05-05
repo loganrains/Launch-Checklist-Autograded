@@ -30,13 +30,12 @@ function validateInput(testInput) {
 
  
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
+    // Input Validation
     if (validateInput(pilot) == "Empty" || validateInput(copilot) == "Empty" || validateInput(fuelLevel) == "Empty" || validateInput(cargoLevel) == "Empty") {
         window.alert("All fields are required");
         event.preventDefault();
           
-    }
-
-    if (validateInput(pilot) == "Number" || validateInput(copilot) == "Number") {
+    } else if (validateInput(pilot) == "Number" || validateInput(copilot) == "Number") {
         window.alert("Incorrect Data Type Submitted");
         event.preventDefault();
 
@@ -46,9 +45,56 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     }
 
-    return 
+    //Updating List
+    list.style="visibility: visible";
+    document.querySelector("li[id=pilotStatus]").innerHTML = `Pilot ${pilot} is ready for launch`;
+    document.querySelector("li[id=pilotStatus]").style="color: Green";
+    document.querySelector("li[id=copilotStatus]").innerHTML = `Co-pilot ${copilot} is ready for launch`;
+    document.querySelector("li[id=copilotStatus]").style="color: Green";
 
-    // Incomplete 5/3
+    // <<<!?!>>> review edge cases for conditionals below v
+
+    if (fuelLevel >= 10000 && cargoLevel <= 10000) {
+        
+        document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle is Ready for Launch";
+        document.querySelector("h2[id=launchStatus]").style="color: Green";
+        document.querySelector("li[id=fuelStatus]").style="color: Green";
+        document.querySelector("li[id=cargoStatus]").style="color: Green";
+
+    } else if (fuelLevel >= 10000 && cargoLevel > 10000) {
+
+        document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
+        document.querySelector("h2[id=launchStatus]").style="color: Red";
+        document.querySelector("li[id=fuelStatus]").style="color: Green";
+        document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
+        document.querySelector("li[id=cargoStatus]").style="color: Red";
+
+        event.preventDefault();
+
+    } else if (fuelLevel < 10000 && cargoLevel <= 10000) {
+
+        document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
+        document.querySelector("h2[id=launchStatus]").style="color: Red";
+        document.querySelector("li[id=fuelStatus]").innerHTML = "Fuel level too low for launch";
+        document.querySelector("li[id=fuelStatus]").style="color: Red";
+        document.querySelector("li[id=cargoStatus]").style="color: Green";
+
+        event.preventDefault();
+
+    } else if (fuelLevel < 10000 && cargoLevel > 10000) {
+
+        document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
+        document.querySelector("h2[id=launchStatus]").style="color: Red";
+        document.querySelector("li[id=fuelStatus]").innerHTML = "Fuel level too low for launch";
+        document.querySelector("li[id=fuelStatus]").style="color: Red";
+        document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
+        document.querySelector("li[id=cargoStatus]").style="color: Red";
+
+        event.preventDefault();
+
+    }
+
+    // event.preventDefault(); // <<<!?!>>> Maybe Remove this after testing
 }
  
 async function myFetch() {

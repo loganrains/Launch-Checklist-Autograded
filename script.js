@@ -6,11 +6,18 @@ window.addEventListener("load", function() {
     
     let form = document.querySelector("form");
     form.addEventListener("submit", function(event) {
-        console.log("Form Submission Detected");
-        console.log(document.querySelector("input[name=cargoMass]").value);
-        formSubmission(document, document.querySelector("#faultyItems"), document.querySelector("input[name=pilotName]").value, document.querySelector("input[name=copilotName]").value, document.querySelector("input[name=fuelLevel]").value, document.querySelector("input[name=cargoMass]").value);
+        // console.log("Form Submission Detected");
+        // console.log(document.querySelector("input[name=cargoMass]").value);
+
+        let list = document.querySelector("#faultyItems");
+        let pilot = document.querySelector("input[name=pilotName]").value;
+        let copilot = document.querySelector("input[name=copilotName]").value;
+        let fuelLevel = document.querySelector("input[name=fuelLevel]").value;
+        let cargoLevel = document.querySelector("input[name=cargoMass]").value;
+
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel);
     
-    }); // Rewrite fS function call so it isn't so long by letting variables
+    });
 
     // let listedPlanets;
     // // Set listedPlanetsResponse equal to the value returned by calling myFetch()
