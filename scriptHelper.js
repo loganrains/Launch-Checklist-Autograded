@@ -20,7 +20,7 @@ function validateInput(testInput) {
         return "Empty";
 
     } else if (!(isNaN(testInput))) {
-        return "Number";
+        return "Is a Number"; /// Change to "Is a Number"
 
     } else if (isNaN(testInput)) {
         return "Not a Number";
@@ -35,7 +35,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         window.alert("All fields are required");
         event.preventDefault();
           
-    } else if (validateInput(pilot) == "Number" || validateInput(copilot) == "Number") {
+    } else if (validateInput(pilot) == "Is a Number" || validateInput(copilot) == "Is a Number") {
         window.alert("Incorrect Data Type Submitted");
         event.preventDefault();
 
