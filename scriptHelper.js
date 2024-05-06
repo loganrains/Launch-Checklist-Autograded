@@ -46,45 +46,43 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     //Updating List
     list.style="visibility: visible";
     document.querySelector("li[id=pilotStatus]").innerHTML = `Pilot ${pilot} is ready for launch`;
-    document.querySelector("li[id=pilotStatus]").style="color: Green";
+    document.querySelector("li[id=pilotStatus]").style="color: green";
     document.querySelector("li[id=copilotStatus]").innerHTML = `Co-pilot ${copilot} is ready for launch`;
-    document.querySelector("li[id=copilotStatus]").style="color: Green";
+    document.querySelector("li[id=copilotStatus]").style="color: green";
 
     // <<<!?!>>> review edge cases for conditionals below v
 
     if (fuelLevel >= 10000 && cargoLevel <= 10000) {
         
         document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle is Ready for Launch";
-        document.querySelector("h2[id=launchStatus]").style="color: Green";
-        document.querySelector("li[id=fuelStatus]").style="color: Green";
-        document.querySelector("li[id=cargoStatus]").style="color: Green";
+        document.querySelector("h2[id=launchStatus]").style="color: green";
+        document.querySelector("li[id=fuelStatus]").style="color: green";
+        document.querySelector("li[id=cargoStatus]").style="color: green";
 
     } else if (fuelLevel >= 10000 && cargoLevel > 10000) {
 
         document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
-        document.querySelector("h2[id=launchStatus]").style="color: Red";
-        document.querySelector("li[id=fuelStatus]").style="color: Green";
+        document.querySelector("h2[id=launchStatus]").style="color: red";
+        document.querySelector("li[id=fuelStatus]").style="color: green";
         document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
-        document.querySelector("li[id=cargoStatus]").style="color: Red";
+        document.querySelector("li[id=cargoStatus]").style="color: red";
 
     } else if (fuelLevel < 10000 && cargoLevel <= 10000) {
 
         document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
-        document.querySelector("h2[id=launchStatus]").style="color: Red";
+        document.querySelector("h2[id=launchStatus]").style="color: red";
         document.querySelector("li[id=fuelStatus]").innerHTML = "Fuel level too low for launch";
-        document.querySelector("li[id=fuelStatus]").style="color: Red";
-        document.querySelector("li[id=cargoStatus]").style="color: Green";
+        document.querySelector("li[id=fuelStatus]").style="color: red";
+        document.querySelector("li[id=cargoStatus]").style="color: green";
 
     } else if (fuelLevel < 10000 && cargoLevel > 10000) {
 
         document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
-        document.querySelector("h2[id=launchStatus]").style="color: Red";
+        document.querySelector("h2[id=launchStatus]").style="color: red";
         document.querySelector("li[id=fuelStatus]").innerHTML = "Fuel level too low for launch";
-        document.querySelector("li[id=fuelStatus]").style="color: Red";
+        document.querySelector("li[id=fuelStatus]").style="color: red";
         document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
-        document.querySelector("li[id=cargoStatus]").style="color: Red";
-
-        
+        document.querySelector("li[id=cargoStatus]").style="color: red";
 
     }
 
