@@ -30,7 +30,7 @@ function validateInput(testInput) {
 
  
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    event.preventDefault();
+    
 
     if (validateInput(pilot) == "Empty" || validateInput(copilot) == "Empty" || validateInput(fuelLevel) == "Empty" || validateInput(cargoLevel) == "Empty") {
         window.alert("All fields are required");
