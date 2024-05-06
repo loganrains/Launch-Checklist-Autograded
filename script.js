@@ -1,4 +1,3 @@
-// const { formSubmission } = require("./scriptHelper");    Did I write this
 
 window.addEventListener("load", function() {
 

@@ -30,18 +30,16 @@ function validateInput(testInput) {
 
  
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    // Input Validation
+    event.preventDefault();
+
     if (validateInput(pilot) == "Empty" || validateInput(copilot) == "Empty" || validateInput(fuelLevel) == "Empty" || validateInput(cargoLevel) == "Empty") {
         window.alert("All fields are required");
-        event.preventDefault();
           
     } else if (validateInput(pilot) == "Is a Number" || validateInput(copilot) == "Is a Number") {
         window.alert("Incorrect Data Type Submitted");
-        event.preventDefault();
 
     } else if (validateInput(fuelLevel) == "Not a Number" || validateInput(cargoLevel) == "Not a Number") {
         window.alert("Incorrect Data Type Submitted");
-        event.preventDefault();
 
     }
 
@@ -69,8 +67,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
         document.querySelector("li[id=cargoStatus]").style="color: Red";
 
-        event.preventDefault();
-
     } else if (fuelLevel < 10000 && cargoLevel <= 10000) {
 
         document.querySelector("h2[id=launchStatus]").innerHTML = "Shuttle Not Ready for Launch";
@@ -78,8 +74,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.querySelector("li[id=fuelStatus]").innerHTML = "Fuel level too low for launch";
         document.querySelector("li[id=fuelStatus]").style="color: Red";
         document.querySelector("li[id=cargoStatus]").style="color: Green";
-
-        event.preventDefault();
 
     } else if (fuelLevel < 10000 && cargoLevel > 10000) {
 
@@ -90,7 +84,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         document.querySelector("li[id=cargoStatus]").innerHTML = "Cargo mass too heavy for launch";
         document.querySelector("li[id=cargoStatus]").style="color: Red";
 
-        event.preventDefault();
+        
 
     }
 
